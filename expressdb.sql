@@ -1,59 +1,77 @@
--- phpMyAdmin SQL Dump
--- version 5.2.1
--- https://www.phpmyadmin.net/
---
--- Host: 127.0.0.1:3307
--- Waktu pembuatan: 12 Nov 2024 pada 08.03
--- Versi server: 10.4.32-MariaDB
--- Versi PHP: 8.2.12
-
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-START TRANSACTION;
-SET time_zone = "+00:00";
+-- Membuat database baru
+CREATE DATABASE IF NOT EXISTS `express`;
+USE `express`;
 
 
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
 
---
--- Database: `expressdb`
---
-CREATE DATABASE IF NOT EXISTS `expressdb` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
-USE `expressdb`;
+-- Tabel untuk users (informasi pengguna)
+CREATE TABLE IF NOT EXISTS `users` (
+    `user_id` INT AUTO_INCREMENT PRIMARY KEY,
+    `username` VARCHAR(100) NOT NULL UNIQUE,
+    `email` VARCHAR(100) NOT NULL UNIQUE,
+    `password_hash` VARCHAR(255) NOT NULL,
+    `role` enum("admin","user") NOT NULL,
+    `first_name` VARCHAR(100),
+    `last_name` VARCHAR(100),
+    `phone_number` VARCHAR(20),
+    `address` TEXT,
+    `photo_profile` varchar(100),
+    `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    `updated_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
 
--- --------------------------------------------------------
 
---
--- Struktur dari tabel `users`
---
+-- Tabel untuk products (informasi produk sepatu)
+CREATE TABLE IF NOT EXISTS `products` (
+    `product_id` INT AUTO_INCREMENT PRIMARY KEY,
+    `name` VARCHAR(255) NOT NULL,
+    `description` TEXT,
+    `price` DECIMAL(10, 2) NOT NULL,
+    `stock_quantity` INT NOT NULL,
+    `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    `updated_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
 
-CREATE TABLE `users` (
-  `usn` varchar(30) NOT NULL,
-  `email` varchar(30) NOT NULL,
-  `pw` varchar(255) NOT NULL,
-  `role` enum('admin','user') NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+-- Tabel untuk images (gambar produk)
+CREATE TABLE IF NOT EXISTS `images` (
+    `image_id` INT AUTO_INCREMENT PRIMARY KEY,
+    `product_id` INT NOT NULL,
+    `image_url` VARCHAR(255) NOT NULL,
+    `image_type` ENUM('thumbnail', 'main', 'gallery') NOT NULL,
+    `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (`product_id`) REFERENCES `products`(`product_id`)
+);
 
---
--- Dumping data untuk tabel `users`
---
+-- Tabel untuk orders (pesanan)
+CREATE TABLE IF NOT EXISTS `orders` (
+    `order_id` INT AUTO_INCREMENT PRIMARY KEY,
+    `user_id` INT NOT NULL,
+    `order_date` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    `total_price` DECIMAL(10, 2) NOT NULL,
+    `status` ENUM('pending', 'completed', 'cancelled') DEFAULT 'pending',
+    `shipping_address` VARCHAR(255),
+    FOREIGN KEY (`user_id`) REFERENCES `users`(`user_id`)
+);
 
-INSERT INTO `users` (`usn`, `email`, `pw`, `role`) VALUES
-('demos', 'demosaguardy2804@gmail.com', '$2y$10$fnmGMRzbX/2BEEfE9KpyWOb5ZhiVK/OvIr0TjtdE1V.fxx.t2mLle', 'user');
+-- Tabel untuk order_items (detail produk dalam pesanan)
+CREATE TABLE IF NOT EXISTS `order_items` (
+    `order_item_id` INT AUTO_INCREMENT PRIMARY KEY,
+    `order_id` INT NOT NULL,
+    `product_id` INT NOT NULL,
+    `quantity` INT NOT NULL,
+    `unit_price` DECIMAL(10, 2) NOT NULL,
+    `total_price` DECIMAL(10, 2) NOT NULL,
+    FOREIGN KEY (`order_id`) REFERENCES `orders`(`order_id`),
+    FOREIGN KEY (`product_id`) REFERENCES `products`(`product_id`)
+);
 
---
--- Indexes for dumped tables
---
-
---
--- Indeks untuk tabel `users`
---
-ALTER TABLE `users`
-  ADD PRIMARY KEY (`usn`);
-COMMIT;
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+-- Tabel untuk cart (keranjang belanja)
+CREATE TABLE IF NOT EXISTS `cart` (
+    `cart_id` INT AUTO_INCREMENT PRIMARY KEY,
+    `user_id` INT NOT NULL,
+    `product_id` INT NOT NULL,
+    `quantity` INT NOT NULL,
+    `added_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (`user_id`) REFERENCES `users`(`user_id`),
+    FOREIGN KEY (`product_id`) REFERENCES `products`(`product_id`)
+);

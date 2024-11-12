@@ -40,7 +40,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     } else {
       echo "
       <script>
-      alert('Registrasi gagal');
+      alert('Username atau email sudah terdaftar');
       </script>";
     }
   }
