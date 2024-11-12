@@ -51,9 +51,9 @@ class User
 
     public function login()
     {
-        if (isset($_POST['username']) && isset($_POST['password_hash'])) {
+        if (isset($_POST['username']) && isset($_POST['password'])) {
             $input = $_POST['username'];
-            $password = $_POST['password_hash'];
+            $password = $_POST['password'];
 
             $query = "SELECT * FROM " . $this->table_name . " WHERE (username = :input OR email = :input)";
             $stmt = $this->conn->prepare($query);
