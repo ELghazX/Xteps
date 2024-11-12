@@ -3,10 +3,6 @@ session_start();
 require_once 'config/database.php';
 require_once 'classes/Users.php';
 
-$database = new Database();
-$db = $database->getConnection();
-$user = new User($db);
-
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
   if (isset($_POST['Login'])) {
     if ($user->login()) {
@@ -26,7 +22,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
       alert('Login gagal username atau password salah');
       </script>";
     }
-  } elseif (isset($_POST['Register'])) {
+  } else if (isset($_POST['Register'])) {
     $user->username = $_POST['username'];
     $user->password = password_hash($_POST['password'], PASSWORD_DEFAULT);
     $user->email = $_POST['email'];
@@ -40,7 +36,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     } else {
       echo "
       <script>
-      alert('Registrasi gagal');
+      alert('Username atau email sudah terdaftar');
       </script>";
     }
   }

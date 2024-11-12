@@ -3,7 +3,6 @@ class User
 {
     private $conn;
     private $table_name = "users";
-
     public $username;
     public $password;
     public $email;
@@ -14,7 +13,16 @@ class User
         $this->conn = $db;
     }
 
-    public function isUsernameExists() {
+    public function isEmailExist()
+    {
+        $query = "SELECT COUNT(*) FROM " . $this->table_name . " WHERE email = :email";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(":email", $this->email);
+        $stmt->execute();
+        return $stmt->fetchColumn() > 0;
+    }
+    public function isUsernameExists()
+    {
         $query = "SELECT COUNT(*) FROM " . $this->table_name . " WHERE usn = :username";
         $stmt = $this->conn->prepare($query);
         $stmt->bindParam(":username", $this->username);
@@ -24,8 +32,8 @@ class User
 
     public function register()
     {
-        if ($this->isUsernameExists()) {
-            return "Username sudah terdaftar. Gunakan username lain.";
+        if ($this->isUsernameExists() or $this->isEmailExist()) {
+            return false;
         }
         $query = "INSERT INTO " . $this->table_name . " (usn, email, pw, role) VALUES (:username, :email, :password, :role)";
 
@@ -42,11 +50,12 @@ class User
         return false;
     }
 
-    public function login() {
+    public function login()
+    {
         if (isset($_POST['username']) && isset($_POST['password'])) {
-            $input = $_POST['username'];  
-            $password = $_POST['password'];  
-            
+            $input = $_POST['username'];
+            $password = $_POST['password'];
+
             $query = "SELECT * FROM " . $this->table_name . " WHERE (usn = :input OR email = :input)";
             $stmt = $this->conn->prepare($query);
             $stmt->bindParam(":input", $input);
@@ -65,5 +74,6 @@ class User
         }
         return false;
     }
-    
 }
+
+$user = new User($db);
