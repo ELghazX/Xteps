@@ -4,13 +4,26 @@ class User
     private $conn;
     private $table_name = "users";
     public $username;
-    public $password;
     public $email;
+    public $password;
     public $role;
+    public $firstName;
+    public $lastName;
+    public $phoneNumber;
+    public $address;
+    public $photoProfile;
 
     public function __construct($db)
     {
         $this->conn = $db;
+    }
+    public function isEmailExists()
+    {
+        $query = "SELECT COUNT(*) FROM " . $this->table_name . " WHERE email = :email";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(":email", $this->email);
+        $stmt->execute();
+        return $stmt->fetchColumn() > 0;
     }
 
     public function isEmailExist()
@@ -23,7 +36,7 @@ class User
     }
     public function isUsernameExists()
     {
-        $query = "SELECT COUNT(*) FROM " . $this->table_name . " WHERE usn = :username";
+        $query = "SELECT COUNT(*) FROM " . $this->table_name . " WHERE username = :username";
         $stmt = $this->conn->prepare($query);
         $stmt->bindParam(":username", $this->username);
         $stmt->execute();
@@ -32,13 +45,14 @@ class User
 
     public function register()
     {
-        if ($this->isUsernameExists() or $this->isEmailExist()) {
+
+
+        if ($this->isUsernameExists() or $this->isEmailExists()) {
             return false;
         }
-        $query = "INSERT INTO " . $this->table_name . " (usn, email, pw, role) VALUES (:username, :email, :password, :role)";
+        $query = "INSERT INTO " . $this->table_name . " (username, email, password_hash, role) VALUES (:username, :email, :password, :role)";
 
         $stmt = $this->conn->prepare($query);
-
         $stmt->bindParam(":username", $this->username);
         $stmt->bindParam(":email", $this->email);
         $stmt->bindParam(":password", $this->password);
@@ -56,7 +70,8 @@ class User
             $input = $_POST['username'];
             $password = $_POST['password'];
 
-            $query = "SELECT * FROM " . $this->table_name . " WHERE (usn = :input OR email = :input)";
+
+            $query = "SELECT * FROM " . $this->table_name . " WHERE (username = :input OR email = :input)";
             $stmt = $this->conn->prepare($query);
             $stmt->bindParam(":input", $input);
             $stmt->execute();
@@ -64,8 +79,8 @@ class User
             if ($stmt->rowCount() > 0) {
                 $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
-                if (password_verify($password, $row['pw'])) {
-                    $this->username = $row['usn'];
+                if (password_verify($password, $row['password_hash'])) {
+                    $this->username = $row['username'];
                     $this->role = $row['role'];
                     $this->email = $row['email'];
                     return true;
@@ -76,4 +91,4 @@ class User
     }
 }
 
-$user = new User($db);
+

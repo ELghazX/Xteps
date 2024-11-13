@@ -1,10 +1,9 @@
 <?php
 session_start();
-require_once 'database.php';
-require_once 'Users.php';
+include 'config/database.php';
+require_once 'classes/Users.php';
 
-$database = new Database();
-$db = $database->getConnection();
+
 $user = new User($db);
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
@@ -15,9 +14,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
       $_SESSION['email'] = $user->email;
 
       if ($user->role === 'admin') {
-        header("Location: dashboard.php");
+        header("Location: dashboard_admin.php");
       } else {
-        header("Location: index.php");
+        header("Location: dashboard.php");
       }
       exit();
     } else {
@@ -40,7 +39,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     } else {
       echo "
       <script>
-      alert('Registrasi gagal');
+      alert('Username atau email sudah terdaftar');
       </script>";
     }
   }
@@ -139,5 +138,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     </div>
   </div>
 </body>
+
+
 
 </html>
