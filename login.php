@@ -1,7 +1,11 @@
 <?php
 session_start();
-require_once 'config/database.php';
-require_once 'classes/Users.php';
+require_once 'database.php';
+require_once 'Users.php';
+
+$database = new Database();
+$db = $database->getConnection();
+$user = new User($db);
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
   if (isset($_POST['Login'])) {
@@ -11,9 +15,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
       $_SESSION['email'] = $user->email;
 
       if ($user->role === 'admin') {
-        header("Location: dashboard_admin.php");
-      } else {
         header("Location: dashboard.php");
+      } else {
+        header("Location: index.php");
       }
       exit();
     } else {
@@ -22,7 +26,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
       alert('Login gagal username atau password salah');
       </script>";
     }
-  } else if (isset($_POST['Register'])) {
+  } elseif (isset($_POST['Register'])) {
     $user->username = $_POST['username'];
     $user->password = password_hash($_POST['password'], PASSWORD_DEFAULT);
     $user->email = $_POST['email'];
@@ -36,7 +40,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     } else {
       echo "
       <script>
-      alert('Username atau email sudah terdaftar');
+      alert('Registrasi gagal');
       </script>";
     }
   }
@@ -51,14 +55,14 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Login</title>
   <link rel="icon" type="image/jpeg" href="img/icon.ico">
-  <link rel="stylesheet" href="login.css">
+  <link rel="stylesheet" href="Assets/css/login.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 
 <body class="posisi">
   <header>
     <div>
-      <img src="image/logo.png" alt="Logo">
+      <img src="Assets/icon/logo.png" alt="Logo">
     </div>
     <nav>
       <a href="#">Best Sellers</a>
@@ -68,8 +72,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     </nav>
     <div class="search-bar">
       <input type="text" placeholder="Search" class="search-input">
-      <img src="image/tas.png" alt="Cart Icon">
-      <img src="image/akun.png" alt="akun Icon">
+      <img src="Assets/icon/bag.png" alt="Cart Icon">
+      <img src="Assets/icon/akun.png" alt="akun Icon">
     </div>
   </header>
 
@@ -78,10 +82,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     <div class="cover">
       <div class="front">
-        <img src="image/login.jpg" alt="Login Image">
+        <img src="Assets/images/login.jpg" alt="Login Image">
       </div>
       <div class="back">
-        <img class="backImg" src="image/login.jpg" alt="Back Image">
+        <img class="backImg" src="Assets/images/login.jpg" alt="Back Image">
       </div>
     </div>
 
