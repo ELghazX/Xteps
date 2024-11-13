@@ -20,6 +20,8 @@ SET time_zone = "+00:00";
 --
 -- Database: `express`
 --
+CREATE DATABASE express;
+USE express;
 
 -- --------------------------------------------------------
 
