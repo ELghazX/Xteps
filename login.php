@@ -54,14 +54,14 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Login</title>
   <link rel="icon" type="image/jpeg" href="img/icon.ico">
-  <link rel="stylesheet" href="login.css">
+  <link rel="stylesheet" href="Assets/css/login.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 
 <body class="posisi">
   <header>
     <div>
-      <img src="image/logo.png" alt="Logo">
+      <img src="Assets/icon/logo.png" alt="Logo">
     </div>
     <nav>
       <a href="#">Best Sellers</a>
@@ -71,8 +71,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     </nav>
     <div class="search-bar">
       <input type="text" placeholder="Search" class="search-input">
-      <img src="image/tas.png" alt="Cart Icon">
-      <img src="image/akun.png" alt="akun Icon">
+      <img src="Assets/icon/bag.png" alt="Cart Icon">
+      <img src="Assets/icon/akun.png" alt="akun Icon">
     </div>
   </header>
 
@@ -81,10 +81,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     <div class="cover">
       <div class="front">
-        <img src="image/login.jpg" alt="Login Image">
+        <img src="Assets/images/login.jpg" alt="Login Image">
       </div>
       <div class="back">
-        <img class="backImg" src="image/login.jpg" alt="Back Image">
+        <img class="backImg" src="Assets/images/login.jpg" alt="Back Image">
       </div>
     </div>
 
@@ -138,5 +138,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     </div>
   </div>
 </body>
+
+
 
 </html>

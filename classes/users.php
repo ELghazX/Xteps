@@ -3,7 +3,6 @@ class User
 {
     private $conn;
     private $table_name = "users";
-
     public $username;
     public $email;
     public $password;
@@ -27,6 +26,14 @@ class User
         return $stmt->fetchColumn() > 0;
     }
 
+    public function isEmailExist()
+    {
+        $query = "SELECT COUNT(*) FROM " . $this->table_name . " WHERE email = :email";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(":email", $this->email);
+        $stmt->execute();
+        return $stmt->fetchColumn() > 0;
+    }
     public function isUsernameExists()
     {
         $query = "SELECT COUNT(*) FROM " . $this->table_name . " WHERE username = :username";
@@ -38,6 +45,8 @@ class User
 
     public function register()
     {
+
+
         if ($this->isUsernameExists() or $this->isEmailExists()) {
             return false;
         }
@@ -61,6 +70,7 @@ class User
             $input = $_POST['username'];
             $password = $_POST['password'];
 
+
             $query = "SELECT * FROM " . $this->table_name . " WHERE (username = :input OR email = :input)";
             $stmt = $this->conn->prepare($query);
             $stmt->bindParam(":input", $input);
@@ -80,3 +90,5 @@ class User
         return false;
     }
 }
+
+
