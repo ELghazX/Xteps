@@ -14,15 +14,15 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
       $_SESSION['email'] = $user->email;
 
       if ($user->role === 'admin') {
-        header("Location: dashboard_admin.php");
-      } else {
         header("Location: dashboard.php");
+      } else {
+        header("Location: index.php");
       }
       exit();
     } else {
       echo "
       <script>
-      alert('Login gagal username atau password salah');
+      alert('Login Failed wrong username or password');
       </script>";
     }
   } elseif (isset($_POST['Register'])) {
@@ -34,12 +34,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     if ($user->register()) {
       echo "
       <script>
-      alert('Registrasi berhasil silahkan login');
+      alert('Registrasi Successful!');
       </script>";
     } else {
       echo "
       <script>
-      alert('Username atau email sudah terdaftar');
+      alert('Username or email Already exist');
       </script>";
     }
   }
@@ -138,7 +138,5 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     </div>
   </div>
 </body>
-
-
 
 </html>

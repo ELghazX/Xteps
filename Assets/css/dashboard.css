@@ -24,7 +24,7 @@
   background-color: #2e778d;
   color: #000;
   padding: 20px;
-  width: 80%;
+  width: 100%;
   margin-top: 45px;
   margin-bottom: 80px;
 }
@@ -49,27 +49,6 @@ td {
   text-align: center;
 }
 
-.sidebar-content li a {
-  display: flex;
-  color: black;
-  align-items: center;
-  background: none;
-}
-
-.sidebar-content li button {
-  display: flex;
-  color: black;
-  background: none;
-  border: none;
-  font-size: 16px;
-  align-items: center;
-}
-
-a {
-  text-decoration: none;
-  color:currentColor;
-}
-
 .pagination {
   display: flex;
   justify-content: center;
@@ -77,10 +56,9 @@ a {
 }
 
 .pagination button {
-  padding: 5px 10px;
+  padding: 10px 10px;
   border: none;
-  background-color: #245e7a;
-  color: #fff;
+  color: #FFFFFF;
   border-radius: 4px;
   cursor: pointer;
 }
@@ -88,17 +66,5 @@ a {
 .top-section {
   display: flex;
   justify-content: space-between;
-  gap: 100px;
-}
-
-.container {
-  border-color: 5px solid var(--line-clr);
-  font-size: medium;
-  margin-bottom: 30px;
-  padding: 10px;
-
-  h2,
-  p {
-    margin-top: 1em;
-  }
+  gap: 80px;
 }

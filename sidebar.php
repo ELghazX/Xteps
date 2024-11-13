@@ -9,10 +9,10 @@
         <li>
             <button onclick="toggleSubMenu(this)" class="dropdown-btn">
                 <img src="Assets/icon/dashboard.png" alt="dashboard" class="icon">
-                <span>Dashboard</span>
+                <a href="dashboard.php"><span>Dashboard</span></a>
             </button>
 
-            <button onclick="toggleSubMenu(this)" class="dropdown-btn">
+            <button onclick="toggleSubMenu(this)" class="dropdown-btn" id="dropdown-btn">
                 <img src="Assets/icon/cart.png" alt="E-Commerce" class="icon">
                 <span>E-Commerce</span>
             </button>
@@ -21,7 +21,7 @@
                   <li><a href="product_list.php">Product List</a></li>
               </ul>
 
-            <button onclick="toggleSubMenu(this)" class="dropdown-btn">
+            <button onclick="toggleSubMenu(this)" class="dropdown-btn" id="dropdown-btn">
                 <img src="Assets/icon/order.png" alt="Order" class="icon">
                 <span>Order</span>
             </button>
@@ -31,7 +31,7 @@
                   <li><a href="completed.php">Complete Order</a></li>
               </ul>
 
-        </li>
+        </li>       
 
         <li class="sidebar-footer">
             <a href="profil.php">

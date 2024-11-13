@@ -4,8 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Confirm</title>
-    <link rel="stylesheet" href="Assets/css/send_receipt.css">
-    <link rel="stylesheet" href="Assets/css/sidebar.css">
+    <link rel="stylesheet" href="Assets/css/send_receipt.css?v=<?php echo time(); ?>">
+    <link rel="stylesheet" href="Assets/css/sidebar.css?v=<?php echo time(); ?>">
+    <link rel="stylesheet" href="Assets/css/style.css?v=<?php echo time(); ?>">
 </head>
 <body>
   <!-- Sidebar -->
@@ -51,26 +52,6 @@
             <button>Upload</button>
             <button>Confirm</button>
           </div>
-
-        <!-- Order Card 3 -->
-        <div class="order-card">
-          <div class="order-item">
-            <img src="Assets/images/Heiden_Heritage_-_Fender-white-streak.png" alt="Shoes 2">
-            <img src="Assets/images/OIP.jpeg" alt="">
-            <div class="order-info">
-              <p>Story Kitadake</p>
-              <p>Rp. 300.000</p>
-              <p>Quantity: 1</p>
-            </div>
-          </div>
-          <div class="order-details">
-            <button>Upload</button>
-            <button>Confirm</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </main>
 
   <div class="footer">&copy; 2024 Copyright</div>
 
