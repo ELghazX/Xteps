@@ -1,0 +1,112 @@
+#sidebar {
+    height: 100%;
+    width: 170px;
+    background-color: #3D798D;
+    position: sticky;
+    transition: width 300ms ease-in-out;
+}
+
+#sidebar.close {
+    width: 60px;
+}
+
+#sidebar ul {
+    padding: 0;
+    list-style: none;
+    position: fixed;
+}
+
+#sidebar ul li {
+    margin-bottom: 12px;
+}
+
+#sidebar a,
+#sidebar .dropdown-btn {
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    padding: 12px;
+    color: #e0f4f8;
+    text-decoration: none;
+    border-radius: 5px;
+    gap: 10px;
+    transition: background-color 200ms, opacity 300ms ease-in-out;
+}
+
+#sidebar a:hover,
+#sidebar .dropdown-btn:hover {
+    background-color: #004250;
+}
+
+#sidebar.close a span,
+#sidebar.close .dropdown-btn span {
+    opacity: 0;
+    width: 0;
+    overflow: hidden;
+    transition: opacity 200ms ease, width 0s 300ms;
+}
+
+#sidebar .logo {
+    width: 100px;
+    margin-bottom: 20px;
+    transition: width 300ms ease-in-out;
+    background-color: transparent;
+}
+
+#sidebar.close .logo {
+    width: 60px; 
+}
+
+.sidebar-footer {
+    position: absolute;
+    margin-top: 250px;
+    flex-direction: column;
+    padding: 0px 0;
+}
+
+.sidebar-footer a {
+    color: #FFFFFF;
+}
+
+#toggle-btn {
+    position: fixed;
+    margin: auto;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    transition: transform 300ms ease-in-out;
+}
+
+#sidebar.close #toggle-btn {
+    transform: rotate(180deg);
+}
+
+#sidebar:not(.close) #toggle-btn img {
+    margin-top: 15px;
+    width: 40px; 
+    height: 40px;
+}
+
+.sub-menu {
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 300ms ease-in-out;
+}
+
+.sub-menu.show {
+    position: relative;
+    
+    max-height: 100px; 
+    padding-left: 20px; 
+}   
+
+.icon {
+    width: 24px; 
+    height: 24px;
+    background-color: transparent;
+}
+
+.dropdown-btn button {
+    border: none;
+}
