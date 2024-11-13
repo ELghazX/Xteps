@@ -5,9 +5,15 @@ class User
     private $table_name = "users";
 
     public $username;
-    public $password;
     public $email;
+    public $password;
     public $role;
+    public $firstName;
+    public $lastName;
+    public $phoneNumber;
+    public $address;
+    public $photoProfile;
+
     public function __construct($db)
     {
         $this->conn = $db;

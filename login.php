@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once 'config/database.php';
+include 'config/database.php';
 require_once 'classes/Users.php';
 
 
