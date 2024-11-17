@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Releases</title>
+</head>
+<body>
+    <header>
+        <!-- <?php include 'resources/navbar.php'; ?> -->
+        <h1>New Releases</h1>
+    </header>
+    <main>
+        <div class="filter">️
+            <div class="button filter">
+                <p>▶️ filter</p>
+            </div>
+            <div class="popup filter">
+                <form id="filter-form">
+                    <div class="priceRange">
+                        <p>Price Range</p>
+                        <label for="min-price">Harga Minimum:</label>
+                        <input type="number" id="min-price" placeholder="Rp 0">
+                        <br><br>
+                        <label for="max-price">Harga Maksimum:</label>
+                        <input type="number" id="max-price" placeholder="Rp 0">
+                        <br><br>
+                        <button type="button" onclick="filterProducts()">Filter</button>
+                    </div>
+                </form>
+                <div class="brandFilter">
+                    <p>Brands</p>
+                    <input type = "checkbox" id="kanky">Kanky
+                    <input type = "checkbox" id="compass">Compass
+                    <input type = "checkbox" id="marque">Marque
+                    <input type = "checkbox" id="ardiles">Ardiles
+                    <input type = "checkbox" id="heiden">Heiden Heritage
+                    <input type = "checkbox" id="ventela">Ventela
+                    <input type = "checkbox" id="unerd">Unerd
+                    <input type = "checkbox" id="fortuna">Fortuna Shoes
+                </div>
+            </div>
+            <div class="containt">
+                <!-- di bawah ini nanti foreach -->
+                <div class="card">
+                    <div class="cardImage">
+                        <img src="Assets/images/shoe1.jpg" alt="shoe1">
+                    </div>
+                    <div class="cardDetail">
+                        <p>Fender Heritage White</p>
+                        <p>IDR 499,000.00</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="cardImage">
+                        <img src="Assets/images/shoe2.jpg" alt="shoe2">
+                    </div>
+                    <div class="cardDetail">
+                        <p>Fender Heritage White</p>
+                        <p>IDR 499,000.00</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="cardImage">
+                        <img src="Assets/images/shoe3.jpg" alt="shoe3">
+                    </div>
+                    <div class="cardDetail">
+                        <p>Fender Heritage White</p>
+                        <p>IDR 499,000.00</p>
+                    </div>
+                </div>
+                <!-- di atas ini nanti foreach -->
+                <!-- TAMBAHIN PAGINATION DISINI YAAA UWU for IKKY -->
+            </div>
+        </div>
+    </main>
+    <footer>
+        <!-- <?php include 'resources/footer.php'; ?> -->
+    </footer>
+</body>
+</html>
