@@ -1,26 +1,22 @@
-const toggleButton = document.getElementById('toggle-btn');
-const sidebar = document.getElementById('sidebar');
+const toggleButton = document.getElementById('toggle-btn')
+const sidebar = document.getElementById('sidebar')
 
 function toggleSidebar() {
-    sidebar.classList.toggle('close');
-    closeAllSubMenus(); // Close all submenus when toggling the sidebar
+    sidebar.classList.toggle('close')
+    toggleButton.classList.toggle('rotate')
+
+    Array.from(sidebar.getElementsByClassName('show')).forEach(ul => {
+        ul.classList.remove('show')
+        ul.previousElementSibling.classList.remove('rotate') 
+    })
 }
 
 function toggleSubMenu(button) {
-    const subMenu = button.nextElementSibling;
+    button.nextElementSibling.classList.toggle('show')
+    button.classList.toggle('rotate')
 
-    // Close other open submenus if the current submenu is not shown
-    if (!subMenu.classList.contains('show')) {
-        closeAllSubMenus();
+    if(sidebar.classList.contains('close')) {
+        sidebar.classList.toggle('close')
+        toggleButton.classList.toggle('rotate')
     }
-
-    // Toggle current submenu
-    subMenu.classList.toggle('show');
-    button.classList.toggle('rotate');
-}
-
-function closeAllSubMenus() {
-    sidebar.querySelectorAll('.show').forEach(subMenu => {
-        subMenu.classList.remove('show');
-    });
 }
