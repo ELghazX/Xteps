@@ -1,7 +1,7 @@
 <nav id="sidebar">
     <ul>
         <li>
-            <span class="logo"><a href="index.php"><img src="Assets/icon/logo.svg" style="width: 90px;" alt="logo"></a></span>
+            <span class="logo"><a href="index.php"><img src="..\Assets/icon/logo.png" style="width: 90px;" alt="logo"></a></span>
             <button onclick=toggleSidebar() id="toggle-btn">
                 <svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="40px" fill="#FFFFFF"><path d="M120-240v-80h520v80H120Zm664-40L584-480l200-200 56 56-144 144 144 144-56 56ZM120-440v-80h400v80H120Zm0-200v-80h520v80H120Z"/></svg>
             </button>
@@ -33,8 +33,9 @@
             </button>
             <ul class="sub-menu">
                 <div>
-                    <li><a href="confirm_order.php">Add Product</a></li>
-                    <li><a href="completed_order.php">Product List</a></li>
+                    <li><a href="confirm_order.php">Confirm Order</a></li>
+                    <li><a href="send_receipt.php">Send Receipt</a></li>
+                    <li><a href="completed_order.php">Completed Order</a></li>
                 </div>
             </ul>
         </li>
