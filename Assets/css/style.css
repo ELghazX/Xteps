@@ -105,7 +105,7 @@ text-decoration: none;
     justify-content: flex-end;
     margin-bottom: 16px;
     .logo {
-        font-weight: 600;
+        font-weight: 100;
     }
 }
 
@@ -117,7 +117,11 @@ text-decoration: none;
     }
 }
 
-#sidebar a, #sidebar .dropdown-btn, #sidebar .logo{
+#sidebar .logo {
+    font-size: .2em;
+}
+
+#sidebar a, #sidebar .dropdown-btn{
     border-radius: .5em;
     padding: .85em;
     text-decoration: none;
@@ -277,8 +281,26 @@ table th, table td {
 }
 
 table img {
-    width: 40px;
-    height: 40px;
+    background-color: var(--base-variant_2);
+    width: 60px;
+    height: 60px;
 }
 
 /* add product */
+
+/* product list */
+.search {
+    border-radius: 10px;
+    margin-bottom: 10px;
+    padding-left: 5px;
+}
+
+.product-list {
+    color: var(--text-variant);
+}
+
+.btn-change, .btn-delete {
+    padding: 5px;
+    background: var(--base-variant_2);
+    color: var(--text-color);
+}

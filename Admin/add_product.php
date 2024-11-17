@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add Product</title>
-    <link rel="stylesheet" href="Assets/css/style.css?v=<?php echo time(); ?>">
-    <script type="text/javascript" src="Assets/javascript/app.js" defer></script>
+    <link rel="stylesheet" href="..\Assets/css/style.css?v=<?php echo time(); ?>">
+    <script type="text/javascript" src="..\Assets/javascript/app.js" defer></script>
 </head>
 <body>
     <!-- navigation -->
@@ -14,15 +14,20 @@
     <!-- main content -->
     <main>
         <div class="top-head">
-            <button><a href="notification.php"><img src="Assets/icon/notifications.svg" alt="notification"></a></button>
-            <a href="login.php"><img src="Assets/icon/account_circle.svg" alt="account"></a>
+            <button><a href="notification.php"><img src="..\Assets/icon/notifications.svg" alt="notification"></a></button>
+            <a href="login.php"><img src="..\Assets/icon/account_circle.svg" alt="account"></a>
         </div>
 
         <div class="content">
             <h2>Add Product</h2>
             <div class="top-section">
                 <div class="box">
-                    
+                    <div class="ordered-product">
+                        <img src="..\Assets/images/Kanky_EXC_02png.png" alt="Shoe">
+                    </div>
+                    <div class="receipt-proof">
+                        <img src="..\Assets/images/OIP.jpeg" alt="Receipt">
+                    </div>
                 </div>
             </div>
 
