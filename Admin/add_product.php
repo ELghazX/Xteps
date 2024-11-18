@@ -20,19 +20,75 @@
 
         <div class="content">
             <h2>Add Product</h2>
-            <div class="top-section">
-                <div class="box">
-                    <div class="ordered-product">
-                        <img src="..\Assets/images/Kanky_EXC_02png.png" alt="Shoe">
+            <div class="form-layout">
+                <div class="main-drag-drop-area" id="mainImage">
+                    <p>Drag and Drop files</p>
+                </div>
+
+                <div class="product-details">
+                    <label for="productName">Product Name</label>
+                    <input type="text" id="productName" placeholder="Enter product name">
+
+                    <label for="price">Price</label>
+                    <input type="text" id="price" placeholder="Enter price">
+
+                    <label for="description">Description</label>
+                    <textarea id="description" placeholder="Enter description"></textarea>
+                </div>
+            </div>
+
+            <h3>Other</h3>
+                <div class="other-images">
+                <div class="sub-drag-drop-area" id="otherImage1"><p>Drag and Drop files</p></div>
+                <div class="sub-drag-drop-area" id="otherImage2"><p>Drag and Drop files</p></div>
+                <div class="sub-drag-drop-area" id="otherImage3"><p>Drag and Drop files</p></div>
+                <div class="sub-drag-drop-area" id="otherImage4"><p>Drag and Drop files</p></div>
+                <div class="sub-drag-drop-area" id="otherImage5"><p>Drag and Drop files</p></div>
+                <div class="sub-drag-drop-area" id="otherImage6"><p>Drag and Drop files</p></div>
+            </div>
+
+            <div class="addon-info">
+                <div class="category-group">
+                    <h3>Category</h3>
+                    <div class="options">
+                    <button class="category-btn">Low top</button>
+                    <button class="category-btn">High top</button>
+                    <button class="category-btn">Dunks</button>
                     </div>
-                    <div class="receipt-proof">
-                        <img src="..\Assets/images/OIP.jpeg" alt="Receipt">
+                </div>
+
+                <div class="category-group">
+                    <h3>Colors</h3>
+                    <div class="options">
+                    <button class="category-btn">Colors 1</button>
+                    <button class="category-btn">Colors 2</button>
+                    <button class="category-btn">Colors 3</button>
+                    <button class="category-btn">Colors 4</button>
+                    </div>
+                </div>
+
+                <div class="category-group">
+                    <h3>Size</h3>
+                    <div class="options">
+                    <button class="category-btn">Size 1</button>
+                    <button class="category-btn">Size 2</button>
+                    <button class="category-btn">Size 3</button>
+                    <button class="category-btn">Size 4</button>
+                    </div>
+                </div>
+
+                <div class="category-group">
+                    <h3>Tag</h3>
+                    <div class="options">
+                    <button class="category-btn">Best seller</button>
+                    <button class="category-btn">New Release</button>
                     </div>
                 </div>
             </div>
 
-            <div class="bottom-section">
-
+            <div class="form-buttons">
+                <button class="cancel-btn">Cancel</button>
+                <button class="save-btn">Save</button>
             </div>
         </div>
 
