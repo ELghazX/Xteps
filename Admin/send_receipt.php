@@ -31,8 +31,7 @@
                             <p>Quantity: 1</p>
                         </div>
                         <div class="confirm-order">
-                            <p>Order Date</p>
-                            <p>17 November 2024</p>
+                            <button>Upload</button>
                             <button>Confirm</button>
                         </div>
                     </div>
@@ -47,8 +46,7 @@
                             <p>Quantity: 1</p>
                         </div>         
                         <div class="confirm-order">
-                            <p>Order Date</p>
-                            <p>17 November 2024</p>
+                            <button>Upload</button>
                             <button>Confirm</button>
                         </div>               
                     </div>

@@ -3,12 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>New Releases</title>
+    <title>Document</title>
 </head>
 <body>
     <header>
-        <!-- <?php include 'resources/navbar.php'; ?> -->
-        <h1>New Releases</h1>
+        <!-- <?php include '..\resources/header.php'; ?> -->
     </header>
     <main>
         <div class="filter">️
@@ -41,9 +40,21 @@
                 </div>
             </div>
         </div>
-        
+        <div class="sort">
+            <div class="sort button">
+                <p>sort by price</p>
+            </div>
+            <div class="popup sort">
+                <button type="button">Ascending</button>
+                <button type="button">Descending</button>
+            </div>
+        </div>
+        <div class="resultfor">
+            <p>Result for: </p>
+        </div>
+
         <div class="content">
-            <!-- di bawah ini nanti foreach -->
+        <!-- di bawah ini nanti foreach -->
             <div class="card">
                 <div class="cardImage">
                     <img src="Assets/images/shoe1.jpg" alt="shoe1">
@@ -76,7 +87,7 @@
         </div>
     </main>
     <footer>
-        <!-- <?php include 'resources/footer.php'; ?> -->
+       <!-- <?php include '..\resources/footer.php'; ?>  -->
     </footer>
 </body>
 </html>
