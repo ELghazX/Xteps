@@ -2,7 +2,7 @@
 class Database
 {
     private $host = "localhost";
-    private $db_name = "nama_database";
+    private $db_name = "express";
     private $username = "root";
     private $password = "";
     public $conn;
