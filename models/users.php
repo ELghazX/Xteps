@@ -3,15 +3,19 @@ class User
 {
     private $conn;
     private $table_name = "users";
+
+    public $user_id;
     public $username;
     public $email;
-    public $password;
+    public $password_hash;
     public $role;
     public $firstName;
     public $lastName;
     public $phoneNumber;
     public $address;
     public $photoProfile;
+    public $created_at;
+    public $updated_at;
 
     public function __construct($db)
     {
@@ -55,7 +59,7 @@ class User
         $stmt = $this->conn->prepare($query);
         $stmt->bindParam(":username", $this->username);
         $stmt->bindParam(":email", $this->email);
-        $stmt->bindParam(":password", $this->password);
+        $stmt->bindParam(":password", $this->password_hash);
         $stmt->bindParam(":role", $this->role);
 
         if ($stmt->execute()) {
@@ -89,6 +93,36 @@ class User
         }
         return false;
     }
+    public function updateUser()
+    {
+        $query = "UPDATE " . $this->table_name . " SET username = :username, email = :email, firstName = :firstName, 
+        lastName = :lastName, phoneNumber = :phoneNumber, address = :address, photoProfile = :photoProfile WHERE user_id = :user_id";
+
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(":username", $this->username);
+        $stmt->bindParam(":email", $this->email);
+        $stmt->bindParam(":firstName", $this->firstName);
+        $stmt->bindParam(":lastName", $this->lastName);
+        $stmt->bindParam(":phoneNumber", $this->phoneNumber);
+        $stmt->bindParam(":address", $this->address);
+        $stmt->bindParam(":photoProfile", $this->photoProfile);
+        $stmt->bindParam(":user_id", $this->user_id);
+
+        if ($stmt->execute()) {
+            return true;
+        }
+        return false;
+    }
+    public function deleteUser()
+    {
+        $query = "DELETE FROM " . $this->table_name . " WHERE user_id = :user_id";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(':user_id', $this->user_id);
+
+        if ($stmt->execute()) {
+            return true;
+        }
+
+        return false;
+    }
 }
-
-
