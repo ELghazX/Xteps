@@ -49,11 +49,15 @@ footer {
     text-align: center;
 }
 
+h2 {
+    margin-bottom: 10px;
+}
+
 /* pagination */
 .pagination {
     display: inline-block;
     display: flex;
-  }
+}
 
 .pagination span {
     color: var(--text-variant);
@@ -62,10 +66,10 @@ footer {
 }
   
 .pagination a {
-color: var(--text-variant);
-float: left;
-padding: 8px 16px;
-text-decoration: none;
+    color: var(--text-variant);
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
 }
 
 .pagination a.active {
@@ -259,13 +263,18 @@ text-decoration: none;
 .recent-orders {
     background-color: var(--container-color);
     padding: 15px;
-    border-radius: 10px;
     color: var(--text-variant);
 }
 
 .recent-orders h2 {
     margin-bottom: 10px;
     color: var(--text-variant);
+}
+
+.recent-orders img {
+    width: 80px;
+    height: 80px;
+    border-radius: 20px;
 }
 
 table {
@@ -287,12 +296,150 @@ table img {
 }
 
 /* add product */
+.form-container {
+    width: 90%;
+    max-width: 1200px;
+    padding: 20px;
+    border-radius: 10px;
+    color: var(--text-color);
+}
+
+.form-layout {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+  
+.main-drag-drop-area {
+    flex: 1;
+    height: 300px;
+    border: 2px dashed;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--text-color);
+    background-color: var(--base-variant_3);
+    cursor: pointer;
+}
+
+.sub-drag-drop-area{
+    flex: 1;
+    height: 200px;
+    border: 2px dashed;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--text-color);
+    background-color: var(--base-variant_3);
+    cursor: pointer;
+}
+
+.drag-drop-area:hover {
+    background-color: var(--base-variant_2);
+}
+
+.product-details {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--container-color);
+    border-radius: 5px;
+}
+
+textarea {
+    resize: none;
+    height: 100px;
+}
+
+.other-images {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin: 20px 0;
+}
+
+.addon-info {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    margin: 20px 0;
+  }
+  
+.category-group {
+    display: flex;
+    flex-direction: column; 
+    align-items: center; 
+    gap: 10px; 
+}
+  
+.options {
+    display: flex;
+    gap: 10px; 
+}
+  
+.category-btn {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 5px;
+    background-color: var(--text-color);
+    cursor: pointer;
+}
+  
+.category-btn:hover {
+    background-color: var(--container-color);
+}
+  
+
+.category-btn {
+    margin: 5px;
+    padding: 8px 12px;
+    background-color: var(--text-color);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.category-btn:hover {
+    background-color: var(--container-color);
+}
+
+.form-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.cancel-btn, .save-btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.cancel-btn {
+    background-color: var(--container-color); 
+}
+
+.save-btn {
+    background-color: var(--container-color);
+
+}
 
 /* product list */
 .search {
+    height: 30px;
     border-radius: 10px;
     margin-bottom: 10px;
     padding-left: 5px;
+    border: none;
 }
 
 .product-list {
@@ -303,4 +450,64 @@ table img {
     padding: 5px;
     background: var(--base-variant_2);
     color: var(--text-color);
+}
+
+/* confirm order */
+.ordered-product {
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.ordered-product img {
+    width: auto;
+    max-width: 250px; 
+    max-height: 250px; 
+    object-fit: cover;
+    border-radius: 10px; 
+}
+
+.ordered-img {
+    background-color: var(--base-variant_3);
+    padding-bottom: 40px;
+}
+
+.ordered-product button {
+    padding: 10px;
+    background-color: var(--base-variant_2);
+    color: var(--text-color);
+    border: none;
+    border-radius: 10px;
+    width: 60%;
+    cursor: pointer;
+}
+
+.confirm-order {
+    display: flex;
+    align-items: end;
+    flex-direction: column;
+    gap: 20px;
+    flex-grow: .8;
+}
+
+/* send receipt */
+
+
+/* completed order */
+.completed-orders {
+    background-color: var(--container-color);
+    padding: 15px;
+    color: var(--text-variant);
+}
+
+.completed-orders h2 {
+    margin-bottom: 10px;
+    color: var(--text-variant);
+}
+
+.completed-orders img {
+    width: 80px;
+    height: 80px;
+    border-radius: 20px;
 }
