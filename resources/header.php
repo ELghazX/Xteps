@@ -2,7 +2,7 @@
     <ul>
         <div>
             <a href="index.php">
-                <img src="Assets/icon/logo.svg" alt="logo" class="logo">
+                <img src="../Assets/icon/logo.svg" alt="logo" class="logo">
             </a>
         </div>
 
