@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mockup Design</title>
   <link rel="stylesheet" href="../Assets/css/style.css">
+  <link rel="stylesheet" href="../Assets/css/order_status.css">
+  <link rel="stylesheet" href="../Assets/css/header.css">
 </head>
 <body>
   <header>
