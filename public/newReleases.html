@@ -4,75 +4,96 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>New Releases</title>
+    <link rel="stylesheet" href="..\Assets/css/style.css" />
 </head>
 <body>
     <header>
         <!-- <?php include 'resources/navbar.php'; ?> -->
-        <h1>New Releases</h1>
+            <div>
+                  <img src="../Assets/icon/logo.png" alt="Logo">
+              </div>
+              <nav>
+                  <a href="#">Best Sellers</a>
+                  <a href="#">New Releases</a>
+                  <a href="#">Collections</a>
+                  <a href="#">About</a>
+              </nav>
+              <div class="search-bar">
+                  <input type="text" placeholder="Search" class="search-input">
+                  <img src="../Assets/icon/shopping_bag.svg" alt="Cart Icon">
+                  <img src="../Assets/icon/account_circle.svg" alt="akun Icon">
+              </div>
+   </header> 
     </header>
     <main>
-        <div class="filter">️
-            <div class="button filter">
-                <p>▶️ filter</p>
-            </div>
-            <div class="popup filter">
-                <form id="filter-form">
-                    <div class="priceRange">
-                        <p>Price Range</p>
-                        <label for="min-price">Harga Minimum:</label>
-                        <input type="number" id="min-price" placeholder="Rp 0">
-                        <br><br>
-                        <label for="max-price">Harga Maksimum:</label>
-                        <input type="number" id="max-price" placeholder="Rp 0">
-                        <br><br>
-                        <button type="button" onclick="filterProducts()">Filter</button>
+        <section class="main-content">
+            <div class="filter-section">
+                <!-- Filter Header -->
+                <div class="filter-header">
+                    <button class="filter-toggle">
+                        <img src="../Assets/icon/filter.svg" alt="Filter Icon">
+                        Filter
+                    </button>
+                </div>
+                
+                <!-- Filter Content -->
+                <div class="filter-content">
+                    <!-- Price Range -->
+                    <div class="price-range">
+                        <p class="section-title">Price Range</p>
+                        <input type="text" placeholder="Maximum">
+                        <input type="text" placeholder="Minimum">
                     </div>
-                </form>
-                <div class="brandFilter">
-                    <p>Brands</p>
-                    <input type = "checkbox" id="kanky">Kanky
-                    <input type = "checkbox" id="compass">Compass
-                    <input type = "checkbox" id="marque">Marque
-                    <input type = "checkbox" id="ardiles">Ardiles
-                    <input type = "checkbox" id="heiden">Heiden Heritage
-                    <input type = "checkbox" id="ventela">Ventela
-                    <input type = "checkbox" id="unerd">Unerd
-                    <input type = "checkbox" id="fortuna">Fortuna Shoes
+            
+                    <!-- Brands -->
+                    <div class="brand-filter">
+                        <p class="section-title">Brands</p>
+                        <label><input type="checkbox"> Kanky</label>
+                        <label><input type="checkbox"> Compass</label>
+                        <label><input type="checkbox"> Marque</label>
+                        <label><input type="checkbox"> Ardiles</label>
+                        <label><input type="checkbox"> Ventela</label>
+                    </div>
                 </div>
             </div>
-        </div>
-        
-        <div class="content">
-            <!-- di bawah ini nanti foreach -->
-            <div class="card">
-                <div class="cardImage">
-                    <img src="Assets/images/shoe1.jpg" alt="shoe1">
+            
+            
+            
+            <section class="product-section">
+                <div class="product-card">
+                    <div class="card-image">
+                        <img src="../Assets/images/Heiden_Heritage_Fender.png" alt="Fender Heritage White">
+                    </div>
+                    <div class="card-details">
+                        <p class="product-title">Fender Heritage</p>
+                        <p class="product-color">White</p>
+                        <p class="product-price">RP 499.000</p>
+                    </div>
                 </div>
-                <div class="cardDetail">
-                    <p>Fender Heritage White</p>
-                    <p>IDR 499,000.00</p>
+                <div class="product-card">
+                    <div class="card-image">
+                        <img src="../Assets/images/Kanky_EXC_02png.png" alt="EXC 02 KANKY White">
+                    </div>
+                    <div class="card-details">
+                        <p class="product-title">EXC 02</p>
+                        <p class="product-color">KANKY White</p>
+                        <p class="product-price">RP 350.000</p>
+                    </div>
                 </div>
+                <div class="product-card">
+                    <div class="card-image">
+                        <img src="../Assets/images/Kanky_x_dr._Tirta_Story_Sensu.png" alt="Dr Tirta KANKY White">
+                    </div>
+                    <div class="card-details">
+                        <p class="product-title">Dr Tirta</p>
+                        <p class="product-color">KANKY White</p>
+                        <p class="product-price">RP 389.000</p>
+                    </div>
+                </div>
+            </section>                      
+                <!-- di atas ini nanti foreach -->
+                <!-- TAMBAHIN PAGINATION DISINI YAAA UWU for IKKY -->
             </div>
-            <div class="card">
-                <div class="cardImage">
-                    <img src="Assets/images/shoe2.jpg" alt="shoe2">
-                </div>
-                <div class="cardDetail">
-                    <p>Fender Heritage White</p>
-                    <p>IDR 499,000.00</p>
-                </div>
-            </div>
-            <div class="card">
-                <div class="cardImage">
-                    <img src="Assets/images/shoe3.jpg" alt="shoe3">
-                </div>
-                <div class="cardDetail">
-                    <p>Fender Heritage White</p>
-                    <p>IDR 499,000.00</p>
-                </div>
-            </div>
-            <!-- di atas ini nanti foreach -->
-            <!-- TAMBAHIN PAGINATION DISINI YAAA UWU for IKKY -->
         </div>
     </main>
     <footer>
