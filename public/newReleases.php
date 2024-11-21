@@ -63,17 +63,23 @@ $products = $conn->resultset();
             </div>
 
             <section class="product-section">
-                <div class="product-card">
-                    <div class="card-image">
-                        <img src="../Assets/images/Heiden_Heritage_Fender.png" alt="Fender Heritage White">
-                    </div>
-                    <div class="card-details">
-                        <p>Fender Heritage</p>
-                        <p>White</p>
-                        <p>RP 499.000</p>
-                    </div>
-                </div>
-                <div class="product-card">
+                <?php if (!empty($products)) : ?>
+                    <?php foreach ($products as $product) : ?>
+                        <div class="product-card">
+                            <div class="card-image">
+                                <img src="../Assets/images/Heiden_Heritage_Fender.png" alt="Fender Heritage White">
+                            </div>
+                            <div class="card-details">
+                                <p>Fender Heritage</p>
+                                <p>White</p>
+                                <p>RP 499.000</p>
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
+                <?php else : ?>
+                    <p>No data found</p>
+                <?php endif; ?>
+                <!-- <div class="product-card">
                     <div class="card-image">
                         <img src="../Assets/images/Kanky_EXC_02png.png" alt="EXC 02 KANKY White">
                     </div>
@@ -92,7 +98,7 @@ $products = $conn->resultset();
                         <p>KANKY White</p>
                         <p>RP 389.000</p>
                     </div>
-                </div>
+                </div> -->
             </section>
             <!-- di atas ini nanti foreach -->
         </section>
