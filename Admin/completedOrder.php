@@ -1,3 +1,24 @@
+<?php
+require_once '../config/Database.php';
+$conn = new Database();
+$query = "SELECT orders.id as order_id, 
+                         orders.status, 
+                         users.first_name as customer_name, 
+                         products.name as product_name, 
+                         products.brand, 
+                         products.price, 
+                         product_variants.stock, 
+                         product_images.file_path
+                  FROM orders
+                  JOIN users ON users.id = orders.user_id
+                  JOIN order_items ON orders.id = order_items.order_id
+                  JOIN product_variants ON product_variants.id = order_items.variant_id
+                  JOIN products ON product_variants.product_id = products.id
+                  JOIN product_images ON products.id = product_images.product_id
+                  WHERE orders.status = 'Shipped'";
+$conn->query($query);
+$completedOrders = $conn->resultSet();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -37,42 +58,23 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td><img src="..\Assets/images/Ardiles_Nfinity_Flash.png" alt="Product"></td>
-                                <td>Ardiles</td>
-                                <td>NandaLoeth</td>
-                                <td>RP 350.000</td>
-                                <td>100</td>
-                                <td>Done</td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td><img src="..\Assets/images/Spotec_Atlas.png" alt="Product"></td>
-                                <td>Spotec</td>
-                                <td>Elghazz</td>
-                                <td>RP 350.000</td>
-                                <td>50</td>
-                                <td>Done</td>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td><img src="..\Assets/images/Fortuna_Handwelted_Sneaker.png" alt="Product"></td>
-                                <td>Fortuna</td>
-                                <td>Gerad</td>
-                                <td>RP 350.000</td>
-                                <td>200</td>
-                                <td>Done</td>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td><img src="..\Assets/images/Fortuna_Handwelted_Sneaker.png" alt="Product"></td>
-                                <td>Fortuna</td>
-                                <td>Gerad</td>
-                                <td>RP 350.000</td>
-                                <td>200</td>
-                                <td>Done</td>
-                            </tr>
+                            <?php if (empty($completedOrders)) : ?>
+                                <tr>
+                                    <td colspan="7">No completed orders found</td>
+                                </tr>
+                            <?php else : ?>
+                                <?php foreach ($completedOrders as $order) : ?>
+                                    <tr>
+                                        <td><?php echo $order['order_id']; ?></td>
+                                        <td><img src="<?php echo $order['file_path']; ?>" alt="Product"></td>
+                                        <td><?php echo $order['brand']; ?></td>
+                                        <td><?php echo $order['customer_name']; ?></td>
+                                        <td>Rp <?php echo $product['price']; ?></td>
+                                        <td><?php echo $order['stock_quantity']; ?></td>
+                                        <td><?php echo $order['status']; ?></td>
+                                    </tr>
+                                <?php endforeach; ?>
+                            <?php endif; ?>
                         </tbody>
                     </table>
                     <div class="pagination">
