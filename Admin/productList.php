@@ -4,7 +4,8 @@ $conn = new Database();
 $query = "SELECT products.*, product_images.file_path, product_variants.size, product_variants.color, product_variants.stock
 FROM products
 JOIN product_images ON products.id = product_images.product_id
-JOIN product_variants ON products.id = product_variants.product_id";
+JOIN product_variants ON products.id = product_variants.product_id
+GROUP by products.id";
 $conn->query($query);
 $products = $conn->resultSet();
 ?>
@@ -42,6 +43,7 @@ $products = $conn->resultSet();
                             <th>Brand</th>
                             <th>Price</th>
                             <th>Size</th>
+                            <th>Color</th>
                             <th>Stock</th>
                             <th>Action</th>
                         </tr>
@@ -50,18 +52,34 @@ $products = $conn->resultSet();
 
                         <?php if (empty($products)) : ?>
                             <tr>
-                                <td colspan="8">No data found</td>
+                                <td colspan="9">No data found</td>
                             </tr>
                         <?php else: ?>
                             <?php foreach ($products as $product) : ?>
                                 <tr>
                                     <td><img src="<?php echo $product['file_path']; ?>" alt="Shoe"></td>
                                     <td><?php echo $product['id']; ?></td>
-                                    <td><?php echo $product['name']; ?></td>
-                                    <td><?php echo $product['brand']; ?></td>
-                                    <td>Rp <?php echo $product['price']; ?></td>
-                                    <td><?php echo $product['size']; ?></td>
-                                    <td><?php echo $product['stock']; ?></td>
+                                    <?php $conn->query("SELECT size,color FROM product_variants WHERE product_id = :product_id");
+                                    $conn->bind(':product_id', $product['id']);
+                                    $sizes = $conn->resultSet();
+                                    $color = "";
+                                    foreach ($sizes as $s) {
+                                        $color .= $s['color'] . ", ";
+                                    }
+                                    $size = "";
+                                    foreach ($sizes as $s) {
+                                        $size .= $s['size'] . ", ";
+                                    }
+                                    $size = rtrim($size, ", ");
+                                    $color = rtrim($color, ", ");
+
+                                    ?>
+                                    <td><?= $product['name']; ?></td>
+                                    <td><?= $product['brand']; ?></td>
+                                    <td>Rp <?= $product['price']; ?></td>
+                                    <td><?= $size; ?></td>
+                                    <td><?= $color ?></td>
+                                    <td><?= $product['stock']; ?></td>
                                     <td><a href="changeProduct.php?id=<?php echo $product['id']; ?>">
                                             <button class="btn-change">Change</button>
                                         </a>

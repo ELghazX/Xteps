@@ -21,7 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     if (!empty($_FILES['images']['name'][0])) {
         $image_folder = "../uploads/products/";
-        foreach ($_FILES['images']['tmp_name'] as $key => $tmp_name) {
+        foreach (($_FILES['images']['tmp_name']) as $key => $tmp_name) {
             $image_name = basename($_FILES['images']['name'][$key]);
             $image_path = $image_folder . uniqid() . "_" . $image_name;
             move_uploaded_file($tmp_name, $image_path);
@@ -47,7 +47,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         }
     }
 
-    header("Location: index.php");
+    header("Location: productList.php");
 }
 ?>
 
