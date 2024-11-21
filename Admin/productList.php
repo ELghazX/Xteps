@@ -4,9 +4,7 @@ $conn = new Database();
 $query = "SELECT products.*, product_images.file_path, product_variants.size, product_variants.color, product_variants.stock
 FROM products
 JOIN product_images ON products.id = product_images.product_id
-JOIN product_variants ON products.id = product_variants.product_id
-GROUP BY products.id";
-
+JOIN product_variants ON products.id = product_variants.product_id";
 $conn->query($query);
 $products = $conn->resultSet();
 ?>
@@ -40,9 +38,10 @@ $products = $conn->resultSet();
                         <tr>
                             <th>Product</th>
                             <th>Product ID</th>
+                            <th>Name</th>
                             <th>Brand</th>
                             <th>Price</th>
-                            <th>Quantity</th>
+                            <th>Size</th>
                             <th>Stock</th>
                             <th>Action</th>
                         </tr>
@@ -51,21 +50,24 @@ $products = $conn->resultSet();
 
                         <?php if (empty($products)) : ?>
                             <tr>
-                                <td colspan="7">No data found</td>
+                                <td colspan="8">No data found</td>
                             </tr>
                         <?php else: ?>
                             <?php foreach ($products as $product) : ?>
                                 <tr>
                                     <td><img src="<?php echo $product['file_path']; ?>" alt="Shoe"></td>
                                     <td><?php echo $product['id']; ?></td>
+                                    <td><?php echo $product['name']; ?></td>
                                     <td><?php echo $product['brand']; ?></td>
                                     <td>Rp <?php echo $product['price']; ?></td>
                                     <td><?php echo $product['size']; ?></td>
                                     <td><?php echo $product['stock']; ?></td>
-                                    <td>
-                                        <a href="changeProduct.php"><button class="btn-change">Change</button></a>
-                                        <button class="btn-delete
-                                    ">Delete</button>
+                                    <td><a href="changeProduct.php?id=<?php echo $product['id']; ?>">
+                                            <button class="btn-change">Change</button>
+                                        </a>
+                                        <a href="deleteProduct.php?id=<?php echo $product['id']; ?>">
+                                            <button class="btn-delete">Delete</button>
+                                        </a>
                                     </td>
                                 </tr>
                             <?php endforeach; ?>
