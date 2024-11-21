@@ -1,0 +1,200 @@
+.product-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 20px;
+  padding: 20px;
+  margin-bottom: 50px;
+}
+
+.product-container {
+  max-width: 450px;
+  max-height: 450px;
+  background-color: var(--container-color);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.product-image img {
+  max-width: 500px;
+  max-height: 500px;
+  object-fit: contain;
+}
+
+.thumbnail-images {
+  display: flex;
+  gap: 15px;
+  margin-top: -20px;
+}
+
+.thumbnail-container {
+  background-color: var(--container-color);
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.thumbnail-container img {
+  width: 100px;
+  height: 100px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.product-details {
+  max-width: 400px;
+  text-align: left;
+  margin-top: 15px;
+  margin-left: 15px;
+}
+
+.product-details p {
+  color: var(--text-color);
+  font-size: 1.2rem;
+  margin-bottom: 5px;
+}
+
+.product-details h1 {
+  font-size: 2rem;
+  margin-bottom: 15px;
+  color: var(--text-color);
+}
+
+.product-details .price {
+  font-size: 1.8rem;
+  color: var(--highlight);
+  margin: 15px 0;
+  font-weight: bold;
+}
+
+.product-details .description {
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  color: var(--text-color);
+}
+
+.colors {
+  display: flex;
+  gap: 15px;
+  margin: 20px 0;
+}
+
+.color {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.color:hover {
+  transform: scale(1.1);
+  box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.5);
+}
+
+.sizes {
+  display: flex;
+  gap: 10px;
+  margin: 15px 0;
+}
+
+.sizes button {
+  width: 45px;
+  height: 45px;
+  background-color: transparent;
+  border: 2px solid #000;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 1.2rem;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 0.3s ease, color 0.3s ease,
+    border-color 0.3s ease;
+}
+
+.sizes button:hover {
+  background-color: var(--highlight);
+  border-color: var(--highlight);
+  color: var(--text-variant);
+}
+
+.add-to-cart {
+  background-color: var(--highlight);
+  border: none;
+  padding: 15px 60px;
+  cursor: pointer;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: var(--text-variant);
+  text-align: center;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  width: 400px;
+}
+
+.add-to-cart:hover {
+  transform: scale(1.05);
+  box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.3);
+}
+
+.recommendations {
+  text-align: left;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin-top: 30px;
+}
+
+.recommendations h2 {
+  font-size: 1.5rem;
+  color: var(--text-color);
+  margin-bottom: 10px;
+  margin-left: 265px;
+}
+
+.recommendation-cards {
+  display: flex;
+  gap: 20px;
+  justify-content: left;
+  margin-left: 260px;
+}
+
+.card {
+  background-color: var(--container-color);
+  border-radius: 15px;
+  padding: 20px;
+  text-align: center;
+  max-width: 250px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  margin-bottom: 20px;
+}
+
+.card img {
+  max-width: 100%;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.card p {
+  margin: 5px 0;
+  color: var(--text-variant);
+  font-size: 1rem;
+}
+
+.card-info {
+  margin-top: 10px;
+}
+
+.card:hover {
+  transform: scale(1.05);
+  box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.2);
+}

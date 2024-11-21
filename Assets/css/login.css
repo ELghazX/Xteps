@@ -1,0 +1,166 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root {
+    --background-image: linear-gradient(to bottom right, #88BBD8, #3D798D, #004250);
+    --base-variant_1: #88BBD8;
+    --base-variant_2: #3D798D;
+    --base-variant_3: #004250;
+    --container-color: #D9D9D9;
+    --text-color: #FFFFFF;
+    --text-variant: #000000;
+    --container-login: #BDF0F0;
+    --highlight: #FFD233;
+}
+
+.container {  
+  margin-left: 350px;
+  margin-top: 50px;
+  max-width: 850px;
+  width: 100%;
+  background: var(--base-variant_1);
+  border-radius: 20px;
+  overflow: hidden;
+  padding: 40px 30px;
+  box-shadow: 0 3px 5px var(--text-variant);
+  perspective: 2700px;
+}
+
+.container .cover {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  height: 100%;
+  width: 50%;
+  z-index: 98;
+  transition: all 1s ease;
+  transform-origin: left;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+}
+
+.container #flip:checked ~ .cover {
+  transform: rotateY(-180deg);
+}
+
+.container #flip:checked ~ .forms .login-form {
+  pointer-events: none;
+}
+
+.container .cover .front,
+.container .cover .back {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
+
+.cover .back {
+  transform: rotateY(180deg);
+}
+
+.container .cover img {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  z-index: 10;
+}
+
+.container .cover .text-login {
+  position: absolute;
+  z-index: 10;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.container .forms {
+  height: 100%;
+  width: 100%; 
+}
+
+.container .form-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.form-content .login-form,
+.form-content .signup-form {
+  width: calc(100% / 2 - 25px);
+}
+
+.forms .form-content .form-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.forms .form-content .form-header .title {
+  text-decoration: none;
+  color: var(--text-color);
+  font-weight: 550;
+  font-size: 16px;
+  cursor: pointer;
+  transition: color 0.3s;
+  margin: 0 20px;
+}
+
+.form-content .input-box input {
+  height: 100%;
+  width: 100%;
+  outline: none;
+  margin: 10px 0;
+  padding: 12px 20px;
+  border: 1px solid var(--container-color);
+  border-radius: 25px;
+  font-size: 16px;
+  box-shadow: 0 4px 8px var(--highlight);
+}
+
+.form-content .input-box input::placeholder {
+  color: var(--text-variant);
+}
+
+.forms .form-content .button input {
+  padding: 12px;
+  background-color: var(--highlight);
+  color: var(--text-variant);
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 15px;
+  transition: background-color 0.3s, box-shadow 0.3s ease;
+}
+
+.forms .form-content label:hover {
+  text-decoration: underline;
+  text-decoration-color: var(--highlight);
+}
+
+.container #flip {
+  display: none;
+}
+
+.signup-form .register-form {
+  width: 100%;
+  background: var(--base-variant_1);
+  padding: 40px 30px;
+}
+
+.signup-form .input-box input::placeholder {
+  color: var(--text-variant);
+}
+
+
+
+
+
+
+
