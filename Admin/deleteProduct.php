@@ -2,13 +2,16 @@
 require_once '../config/Database.php';
 
 if (isset($_GET['id'])) {
-    $product_id = intval($_GET['id']); 
+    $product_id = intval($_GET['id']);
     $conn = new Database();
 
-    $query1 = "DELETE FROM product_images WHERE product_id = :product_id";
-    $conn->query($query1);
+    $query = "SELECT file_path FROM product_images WHERE product_id = :product_id";
+    $conn->query($query);
     $conn->bind(':product_id', $product_id);
-    $conn->execute();
+    $image = $conn->single();
+    if ($image && file_exists($image['file_path'])) {
+        unlink($image['file_path']);
+    }
 
     $query2 = "DELETE FROM product_variants WHERE product_id = :product_id";
     $conn->query($query2);
@@ -21,9 +24,8 @@ if (isset($_GET['id'])) {
     $conn->execute();
 
     echo "Data berhasil dihapus.";
-    header("Location: productList.php"); 
+    header("Location: productList.php");
     exit();
 } else {
     echo "ID produk tidak ditemukan.";
 }
-?>
