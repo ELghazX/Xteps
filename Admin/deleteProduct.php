@@ -8,10 +8,21 @@ if (isset($_GET['id'])) {
     $query = "SELECT file_path FROM product_images WHERE product_id = :product_id";
     $conn->query($query);
     $conn->bind(':product_id', $product_id);
-    $image = $conn->single();
-    if ($image && file_exists($image['file_path'])) {
-        unlink($image['file_path']);
+    $conn->execute();
+    $image = $conn->resultSet();
+    if (!empty($image)) {
+        foreach ($image as $images) {
+            $imagePath = $images['file_path'];
+            if (file_exists($imagePath)) {
+                unlink($imagePath);
+            }
+        }
     }
+
+    $query2 = "DELETE FROM product_images WHERE product_id = :product_id";
+    $conn->query($query2);
+    $conn->bind(':product_id', $product_id);
+    $conn->execute();
 
     $query2 = "DELETE FROM product_variants WHERE product_id = :product_id";
     $conn->query($query2);
